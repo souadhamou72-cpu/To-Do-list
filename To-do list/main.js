@@ -1,4 +1,4 @@
-// ...existing code...
+
 const q = (sel) => document.querySelector(sel);
 const STORAGE_KEY = 'todo_list_v1';
 
@@ -13,7 +13,7 @@ function loadTasks() {
   }
 }
 
-// Build UI
+
 const app = q('#app');
 
 const wrapper = document.createElement('div');
@@ -42,13 +42,13 @@ inputRow.appendChild(addBtn);
 const list = document.createElement('ul');
 list.classList.add(...'space-y-2'.split(' '));
 
-// append to wrapper and app
+
 wrapper.appendChild(title);
 wrapper.appendChild(inputRow);
 wrapper.appendChild(list);
 app.appendChild(wrapper);
 
-// Task creation & rendering
+
 function createTaskElement(task, index, tasks) {
   const li = document.createElement('li');
   li.classList.add(...'flex items-center justify-between px-4 py-2 bg-slate-50 rounded-xl border border-slate-200'.split(' '));
@@ -60,7 +60,7 @@ function createTaskElement(task, index, tasks) {
     textSpan.classList.add(...'line-through opacity-60'.split(' '));
   }
 
-  // Toggle completion when clicking the text
+ 
   textSpan.addEventListener('click', () => {
     task.completed = !task.completed;
     if (task.completed) {
@@ -71,7 +71,7 @@ function createTaskElement(task, index, tasks) {
     saveTasks(tasks);
   });
 
-  // Remove button
+ 
   const removeBtn = document.createElement('button');
   removeBtn.textContent = 'Remove';
   removeBtn.classList.add(...'text-sm px-2 py-1 rounded-lg bg-rose-500 text-white hover:bg-rose-600'.split(' '));
@@ -82,7 +82,7 @@ function createTaskElement(task, index, tasks) {
     renderTasks(tasks);
   });
 
-  // flexible layout: left text, right remove
+  
   const left = document.createElement('div');
   left.classList.add(...'flex items-center gap-3'.split(' '));
   left.appendChild(textSpan);
@@ -101,7 +101,7 @@ function renderTasks(tasks) {
   });
 }
 
-// Add task handler
+
 function addTask() {
   const text = input.value.trim();
   if (!text) {
@@ -116,7 +116,7 @@ function addTask() {
   input.focus();
 }
 
-// Enter key support
+
 input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     addTask();
@@ -125,5 +125,6 @@ input.addEventListener('keydown', (e) => {
 
 addBtn.addEventListener('click', addTask);
 
-// Initial load
+
+
 renderTasks(loadTasks());
